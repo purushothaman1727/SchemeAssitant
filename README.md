@@ -112,6 +112,29 @@ docker compose run --rm -e ADMIN_PASSWORD='...' backend python -m app.scripts.cr
 The Compose file validates, but the images were **not built or run** during development (no Docker
 daemon available). Treat the first build as untested. The migration was verified on SQLite only.
 
+### Deploy on Render
+
+`render.yaml` is a Blueprint (Dashboard > New > Blueprint). It creates a Postgres database, the API
+(Python web service) and the web app (static site). The settings that matter if you configure it by hand:
+
+| Service | Setting | Value |
+|---|---|---|
+| API | Runtime / Python | Python, `PYTHON_VERSION=3.12.10` |
+| API | Root directory | *(leave blank, the repo root)* |
+| API | Build command | `pip install -r requirements.txt` |
+| API | Start command | `cd backend && alembic upgrade head && python -m app.scripts.seed && uvicorn app.main:app --host 0.0.0.0 --port $PORT --proxy-headers` |
+| API | Health check path | `/api/health` |
+| API | Instance | at least ~1 GB RAM; 512 MB plans can be OOM-killed |
+| API | Disk | persistent disk at `/var/data`, with `CHROMA_PATH=/var/data/chroma`, `EMBEDDING_CACHE_DIR=/var/data/models` |
+| API | Env vars | `APP_ENV=production`, `DATABASE_URL`, `JWT_SECRET`, `LLM_API_KEY`, `CORS_ORIGINS` |
+| Web | Build command | `cd frontend && npm ci && npm run build` |
+| Web | Publish directory | `frontend/dist` |
+| Web | Rewrites | `/api/*` to the API service URL, then `/*` to `/index.html` |
+
+After the first deploy, run the one-time ingestion from the API service's Shell:
+`cd /opt/render/project/src && PYTHONPATH=backend python -m app.scripts.ingest`.
+The vector index lives on the persistent disk; without a disk it is lost on every deploy.
+
 ## Configuration
 
 See `.env.example`. Key settings:

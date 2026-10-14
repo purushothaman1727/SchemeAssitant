@@ -1,6 +1,6 @@
 from functools import lru_cache
 
-from pydantic import Field
+from pydantic import Field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -36,6 +36,15 @@ class Settings(BaseSettings):
     llm_base_url: str = "https://api.groq.com/openai/v1"
     llm_api_key: str = ""
     llm_timeout_seconds: int = 60
+
+    @field_validator("database_url")
+    @classmethod
+    def _normalise_database_url(cls, v: str) -> str:
+        """Hosting providers hand out `postgres://` or `postgresql://`; SQLAlchemy 2 needs a driver name."""
+        for prefix in ("postgres://", "postgresql://"):
+            if v.startswith(prefix):
+                return "postgresql+psycopg2://" + v[len(prefix):]
+        return v
 
     @property
     def cors_origin_list(self) -> list[str]:

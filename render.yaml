@@ -1,0 +1,75 @@
+# Render Blueprint: Dashboard > New > Blueprint > pick this repo.
+# Review the plans before applying: the API needs real memory (see notes).
+#
+# After the first deploy, run the ONE-TIME document ingestion from the API service's Shell:
+#   cd /opt/render/project/src && PYTHONPATH=backend python -m app.scripts.ingest
+# (downloads the ~200 MB embedding model and builds the vector index onto the persistent disk).
+
+databases:
+  - name: scheme-db
+    plan: basic-256mb
+    region: singapore          # closest Render region to India
+    databaseName: schemes
+    user: schemeuser
+
+services:
+  # ------------------------------------------------------------------ API
+  - type: web
+    name: scheme-assistant-api
+    runtime: python
+    region: singapore
+    # ChromaDB + the ONNX embedding model need roughly 1 GB+ in practice; 512 MB plans can be OOM-killed.
+    plan: standard
+    # requirements.txt lives at the repo root; the app package is under backend/.
+    buildCommand: pip install -r requirements.txt
+    # Migrate, load the scheme dataset, then serve. Runs from backend/ (alembic.ini is there).
+    startCommand: cd backend && alembic upgrade head && python -m app.scripts.seed && uvicorn app.main:app --host 0.0.0.0 --port $PORT --proxy-headers
+    healthCheckPath: /api/health
+    # The vector index and downloaded model must survive deploys (the normal filesystem is ephemeral).
+    disk:
+      name: scheme-data
+      mountPath: /var/data
+      sizeGB: 2
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.10
+      - key: APP_ENV
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: scheme-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CHROMA_PATH
+        value: /var/data/chroma
+      - key: EMBEDDING_CACHE_DIR
+        value: /var/data/models
+      - key: LLM_PROVIDER
+        value: groq
+      - key: LLM_MODEL
+        value: openai/gpt-oss-120b
+      - key: LLM_API_KEY          # paste your Groq key in the dashboard; never commit it
+        sync: false
+      - key: CORS_ORIGINS         # the static site URL, e.g. https://scheme-assistant-web.onrender.com
+        sync: false
+
+  # ------------------------------------------------------------------ web app (static)
+  - type: web
+    name: scheme-assistant-web
+    runtime: static
+    buildCommand: cd frontend && npm ci && npm run build
+    staticPublishPath: frontend/dist
+    envVars:
+      - key: NODE_VERSION
+        value: 22
+    routes:
+      # The app calls a relative /api, so proxy it to the API service (also avoids CORS).
+      # If you rename the API service, update this URL.
+      - type: rewrite
+        source: /api/*
+        destination: https://scheme-assistant-api.onrender.com/api/*
+      # Single-page-app fallback so deep links such as /results and /chat work on refresh.
+      - type: rewrite
+        source: /*
+        destination: /index.html

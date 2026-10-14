@@ -1,0 +1,33 @@
+# secrets and local config
+.env
+.env.*
+!.env.example
+
+# environments and dependencies
+.venv/
+venv/
+node_modules/
+
+# python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# build output
+frontend/dist/
+dist/
+
+# local data: databases, vector index, downloaded models, research scratch
+*.db
+*.sqlite3
+data/app.db
+data/chroma/
+data/models/
+data/documents/_research/
+backend/data/
+
+# editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

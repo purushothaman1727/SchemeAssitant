@@ -1,0 +1,66 @@
+{
+  "note": "Synthetic profiles only. No real person is represented. Used by tests/test_sample_profiles.py and for manual demos (paste `profile` into POST /api/recommendations).",
+  "profiles": [
+    {
+      "id": "child-class9-tn-40pct",
+      "description": "Child with 50% locomotor disability in class 9, Tamil Nadu, income Rs 2 lakh.",
+      "profile": {"applying_for": "child", "age": 14, "state": "Tamil Nadu", "annual_family_income": 200000,
+                  "education_level": "class_9_10", "is_student": "yes", "disability_status": "yes",
+                  "disability_type": "locomotor", "certificate_status": "udid", "disability_percentage": 50},
+      "expect": {"pre-matric-swd": "potentially_eligible", "post-matric-swd": "does_not_match",
+                 "tn-travel-concession": "potentially_eligible",
+                 "tn-maintenance-allowance": "more_information_required", "ignoa-ps": "information_unverified"}
+    },
+    {
+      "id": "child-class9-income-just-over",
+      "description": "Same as above but income Rs 2,50,001 (one rupee over the pre-matric ceiling).",
+      "profile": {"applying_for": "child", "age": 14, "state": "Tamil Nadu", "annual_family_income": 250001,
+                  "education_level": "class_9_10", "is_student": "yes", "disability_status": "yes",
+                  "disability_type": "locomotor", "certificate_status": "udid", "disability_percentage": 50},
+      "expect": {"pre-matric-swd": "does_not_match"}
+    },
+    {
+      "id": "adult-no-disability-karnataka",
+      "description": "Adult without disability in Karnataka.",
+      "profile": {"age": 30, "state": "Karnataka", "annual_family_income": 900000, "disability_status": "no"},
+      "expect": {"pre-matric-swd": "does_not_match", "tn-travel-concession": "does_not_match",
+                 "udid": "does_not_match", "sipda": "does_not_match"}
+    },
+    {
+      "id": "prefers-not-to-say-tn",
+      "description": "Adult in Tamil Nadu who does not disclose disability status.",
+      "profile": {"age": 28, "state": "Tamil Nadu", "disability_status": "prefer_not_to_say"},
+      "expect": {"tn-travel-concession": "more_information_required", "udid": "potentially_eligible",
+                 "pre-matric-swd": "more_information_required"}
+    },
+    {
+      "id": "pg-student-top-class",
+      "description": "Postgraduate student at a notified institute, 60% disability, income Rs 7.5 lakh, Kerala.",
+      "profile": {"age": 23, "state": "Kerala", "annual_family_income": 750000, "education_level": "postgraduate",
+                  "is_student": "yes", "disability_status": "yes", "disability_percentage": 60,
+                  "studying_in_notified_institute": true},
+      "expect": {"top-class-swd": "potentially_eligible", "post-matric-swd": "does_not_match",
+                 "tn-travel-concession": "does_not_match"}
+    },
+    {
+      "id": "intellectual-disability-tn-maintenance",
+      "description": "Adult with 45% intellectual disability in Tamil Nadu.",
+      "profile": {"age": 35, "state": "Tamil Nadu", "disability_status": "yes",
+                  "disability_type": "intellectual", "disability_percentage": 45},
+      "expect": {"tn-maintenance-allowance": "potentially_eligible"}
+    },
+    {
+      "id": "empty-profile",
+      "description": "Nothing provided: engine must ask for information, not reject.",
+      "profile": {},
+      "expect": {"pre-matric-swd": "more_information_required", "tn-travel-concession": "more_information_required"}
+    },
+    {
+      "id": "senior-bpl-widow",
+      "description": "Widow aged 65, BPL: pension schemes are unverified so no verdict is given.",
+      "profile": {"age": 65, "state": "Tamil Nadu", "disability_status": "no", "is_bpl": true, "is_widow": true},
+      "expect": {"ignoa-ps": "information_unverified", "ignw-ps": "information_unverified",
+                 "pm-jay": "information_unverified"}
+    }
+  ]
+}

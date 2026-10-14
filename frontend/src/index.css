@@ -1,0 +1,54 @@
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/playfair-display";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; }
+  body { @apply bg-paper text-ink antialiased; }
+  :focus-visible { outline: 3px solid #4a7a8d; outline-offset: 3px; border-radius: .5rem; }
+  /* Display serif for page and section titles; card titles stay sans for scannability. */
+  h1, h2 { @apply font-display tracking-tight text-navy; font-weight: 600; }
+  h3, h4 { @apply tracking-tight text-navy; }
+  ::selection { background: #cde4ea; }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full px-5 py-2 text-sm font-semibold
+           transition duration-150 select-none disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary { @apply btn bg-navy text-white hover:bg-navy-800; }
+  .btn-secondary { @apply btn border border-navy-200 bg-white/70 text-navy hover:border-navy-400 hover:bg-white; }
+  .btn-ghost { @apply btn text-navy hover:bg-navy-50; }
+  .btn-lg { @apply min-h-[52px] px-7 text-base; }
+
+  .card { @apply rounded-2xl border border-navy-100 bg-white shadow-card; }
+  .card-hover { @apply transition duration-200 hover:-translate-y-0.5 hover:shadow-lift; }
+
+  .input {
+    @apply block min-h-[44px] w-full rounded-xl border border-navy-200 bg-white px-4 py-2 text-ink shadow-sm
+           placeholder:text-slate-400 transition focus:border-navy-500 focus:outline-none focus:ring-4 focus:ring-sky-100;
+  }
+  .field-label { @apply block text-sm font-medium text-ink-soft; }
+  .hint { @apply mt-1 block text-sm text-ink-mute; }
+  .error-text { @apply mt-1.5 text-sm font-medium text-rose-700; }
+
+  .chip { @apply inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-medium; }
+  .section-title { @apply text-xs font-semibold uppercase tracking-[.14em] text-ink-mute; }
+  .display-title { @apply font-display text-3xl font-semibold text-navy sm:text-4xl; }
+  .link { @apply font-medium text-navy underline decoration-sky-500 decoration-2 underline-offset-4 hover:decoration-navy; }
+  .container-page { @apply mx-auto w-full max-w-6xl px-4 sm:px-6; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+}
+
+.shimmer { position: relative; overflow: hidden; }
+.shimmer::after {
+  content: ""; position: absolute; inset: 0; transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.65), transparent);
+  animation: shimmer 1.4s infinite;
+}

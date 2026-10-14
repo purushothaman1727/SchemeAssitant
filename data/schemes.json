@@ -1,0 +1,1251 @@
+{
+  "dataset_version": "2026-10-13",
+  "notes": "Every rule has verified=true ONLY if the value was read in an official document by the maintainers. Rules taken from secondary sources are recorded with verified=false and are never used to produce 'does not match' results.",
+  "schemes": [
+    {
+      "id": "pre-matric-swd",
+      "name": "Pre-Matric Scholarship for Students with Benchmark Disabilities (Central Sector Umbrella Scheme Scholarships for Students with Disabilities)",
+      "name_ta": null,
+      "jurisdiction": "central",
+      "applicable_state": "ALL",
+      "category": "scholarship",
+      "beneficiary_types": [
+        "student",
+        "child",
+        "person_with_disability"
+      ],
+      "summary": "Component of the DEPwD umbrella scholarship scheme for students with benchmark disability studying in classes IX and X.",
+      "benefits": "Maintenance allowance Rs 800/month (hostellers) or Rs 500/month (day scholars); disability allowance Rs 4,000/year (visual impairment/intellectual disabilities) or Rs 2,000/year (other disabilities); book allowance Rs 1,000/year (guidelines dated 25/09/2024, section 4.2).",
+      "required_documents": [
+        "Valid disability certificate from competent authority",
+        "UDID / UDID enrolment number",
+        "Aadhaar (biometric authentication)",
+        "Income certificate of parent/guardian from authorised Revenue Officer"
+      ],
+      "application_steps": [
+        "Register/log in on the National Scholarship Portal",
+        "Complete the application when the portal window opens for the academic year",
+        "Student must first log in to the UDID portal and give consent to share UDID details (NSP notice)"
+      ],
+      "official_url": "https://depwd.gov.in/en/scholarship/",
+      "application_url": "https://scholarships.gov.in/",
+      "operational_status": "active",
+      "accepting_applications": null,
+      "is_cash_benefit": true,
+      "verification_status": "verified",
+      "date_checked": "2026-10-13",
+      "verification_notes": "Rules read from the DEPwD guidelines (OM 25/09/2024; copy fetched from a mirror because the depwd.gov.in PDF link was not directly extractable). DEPwD lists a later revision notice dated 04/09/2025 that was NOT read. NSP portal showed AY 2026-27 open from 1 June 2026 but the page did not list this scheme's own deadline, so accepting_applications is unknown. Slots are limited (25,000 incl. renewals); meeting criteria does not guarantee award.",
+      "sources": [
+        {
+          "url": "https://depwd.gov.in/en/scholarship/",
+          "title": "DEPwD Scholarship page",
+          "source_type": "portal",
+          "verification_status": "verified"
+        },
+        {
+          "url": "https://scholarships.gov.in/",
+          "title": "National Scholarship Portal",
+          "source_type": "portal",
+          "verification_status": "verified"
+        }
+      ],
+      "rules": [
+        {
+          "key": "disability_required",
+          "field": "disability_status",
+          "operator": "eq",
+          "value": "yes",
+          "mandatory": true,
+          "verified": true,
+          "description": "Student must have a benchmark disability (RPwD Act 2016)."
+        },
+        {
+          "key": "min_disability_pct",
+          "field": "disability_percentage",
+          "operator": "gte",
+          "value": 40,
+          "mandatory": true,
+          "verified": true,
+          "description": "Benchmark disability: 40% or more."
+        },
+        {
+          "key": "class_ix_x",
+          "field": "education_level",
+          "operator": "in",
+          "value": [
+            "class_9_10"
+          ],
+          "mandatory": true,
+          "verified": true,
+          "description": "Regular full-time student in class IX or X."
+        },
+        {
+          "key": "income_ceiling",
+          "field": "annual_family_income",
+          "operator": "lte",
+          "value": 250000,
+          "mandatory": true,
+          "verified": true,
+          "description": "Parental income ceiling Rs 2.5 lakh per annum."
+        }
+      ]
+    },
+    {
+      "id": "post-matric-swd",
+      "name": "Post-Matric Scholarship for Students with Benchmark Disabilities (Central Sector Umbrella Scheme Scholarships for Students with Disabilities)",
+      "name_ta": null,
+      "jurisdiction": "central",
+      "applicable_state": "ALL",
+      "category": "scholarship",
+      "beneficiary_types": [
+        "student",
+        "person_with_disability"
+      ],
+      "summary": "Component of the DEPwD umbrella scholarship scheme for students with benchmark disability in class XI up to Master's level.",
+      "benefits": "Reimbursement of admission/tuition fee up to Rs 1.40 lakh/year; miscellaneous fee up to Rs 10,000/year; maintenance allowance Rs 1,200/month (hostellers) or Rs 650/month (day scholars); disability allowance Rs 4,000/year (visual/intellectual) or Rs 2,000/year (others); book allowance Rs 1,500/year (guidelines section 5b).",
+      "required_documents": [
+        "Valid disability certificate from competent authority",
+        "UDID / UDID enrolment number",
+        "Aadhaar (biometric authentication)",
+        "Income certificate of parent/guardian from authorised Revenue Officer",
+        "Fee receipt"
+      ],
+      "application_steps": [
+        "Register/log in on the National Scholarship Portal",
+        "Complete the application when the portal window opens for the academic year",
+        "Student must first log in to the UDID portal and give consent to share UDID details (NSP notice)"
+      ],
+      "official_url": "https://depwd.gov.in/en/scholarship/",
+      "application_url": "https://scholarships.gov.in/",
+      "operational_status": "active",
+      "accepting_applications": null,
+      "is_cash_benefit": true,
+      "verification_status": "verified",
+      "date_checked": "2026-10-13",
+      "verification_notes": "See pre-matric-swd. 17,000 slots incl. renewals. Not available for several excluded training courses (guidelines note 1).",
+      "sources": [
+        {
+          "url": "https://depwd.gov.in/en/scholarship/",
+          "title": "DEPwD Scholarship page",
+          "source_type": "portal",
+          "verification_status": "verified"
+        },
+        {
+          "url": "https://scholarships.gov.in/",
+          "title": "National Scholarship Portal",
+          "source_type": "portal",
+          "verification_status": "verified"
+        }
+      ],
+      "rules": [
+        {
+          "key": "disability_required",
+          "field": "disability_status",
+          "operator": "eq",
+          "value": "yes",
+          "mandatory": true,
+          "verified": true,
+          "description": "Student must have a benchmark disability."
+        },
+        {
+          "key": "min_disability_pct",
+          "field": "disability_percentage",
+          "operator": "gte",
+          "value": 40,
+          "mandatory": true,
+          "verified": true,
+          "description": "Benchmark disability: 40% or more."
+        },
+        {
+          "key": "level",
+          "field": "education_level",
+          "operator": "in",
+          "value": [
+            "class_11_12",
+            "diploma",
+            "undergraduate",
+            "postgraduate"
+          ],
+          "mandatory": true,
+          "verified": true,
+          "description": "Class XI up to Master's level in a recognised institution."
+        },
+        {
+          "key": "income_ceiling",
+          "field": "annual_family_income",
+          "operator": "lte",
+          "value": 250000,
+          "mandatory": true,
+          "verified": true,
+          "description": "Parental income ceiling Rs 2.5 lakh per annum."
+        }
+      ]
+    },
+    {
+      "id": "top-class-swd",
+      "name": "Top Class Education Scholarship for Students with Benchmark Disabilities (Central Sector Umbrella Scheme)",
+      "name_ta": null,
+      "jurisdiction": "central",
+      "applicable_state": "ALL",
+      "category": "scholarship",
+      "beneficiary_types": [
+        "student",
+        "person_with_disability"
+      ],
+      "summary": "For graduate and postgraduate degree/diploma courses in institutes notified by DEPwD.",
+      "benefits": "Specific amounts are in section 6 of the guidelines; not transcribed in this dataset.",
+      "required_documents": [
+        "Valid disability certificate from competent authority",
+        "UDID / UDID enrolment number",
+        "Aadhaar",
+        "Income certificate of parent/guardian"
+      ],
+      "application_steps": [
+        "Apply through the National Scholarship Portal during the notified window",
+        "Confirm your institute is on the DEPwD notified list (Annexure I)"
+      ],
+      "official_url": "https://depwd.gov.in/en/scholarship/",
+      "application_url": "https://scholarships.gov.in/",
+      "operational_status": "active",
+      "accepting_applications": null,
+      "is_cash_benefit": true,
+      "verification_status": "verified",
+      "date_checked": "2026-10-13",
+      "verification_notes": "Income ceiling Rs 8 lakh, 300 slots incl. renewals (guidelines table, section 3). Distance-mode courses not admissible. Whether the institute is notified cannot be derived from a profile, so it is a 'more information required' check.",
+      "sources": [
+        {
+          "url": "https://depwd.gov.in/en/scholarship/",
+          "title": "DEPwD Scholarship page",
+          "source_type": "portal",
+          "verification_status": "verified"
+        }
+      ],
+      "rules": [
+        {
+          "key": "disability_required",
+          "field": "disability_status",
+          "operator": "eq",
+          "value": "yes",
+          "mandatory": true,
+          "verified": true,
+          "description": "Student must have a benchmark disability."
+        },
+        {
+          "key": "min_disability_pct",
+          "field": "disability_percentage",
+          "operator": "gte",
+          "value": 40,
+          "mandatory": true,
+          "verified": true,
+          "description": "Benchmark disability: 40% or more."
+        },
+        {
+          "key": "level",
+          "field": "education_level",
+          "operator": "in",
+          "value": [
+            "undergraduate",
+            "postgraduate",
+            "diploma"
+          ],
+          "mandatory": true,
+          "verified": true,
+          "description": "Graduate or postgraduate degree/diploma."
+        },
+        {
+          "key": "notified_institute",
+          "field": "studying_in_notified_institute",
+          "operator": "is_true",
+          "value": true,
+          "mandatory": true,
+          "verified": true,
+          "description": "Course must be in an institute notified by DEPwD."
+        },
+        {
+          "key": "income_ceiling",
+          "field": "annual_family_income",
+          "operator": "lte",
+          "value": 800000,
+          "mandatory": true,
+          "verified": true,
+          "description": "Parental income ceiling Rs 8 lakh per annum."
+        }
+      ]
+    },
+    {
+      "id": "aicte-saksham",
+      "name": "AICTE Saksham Scholarship Scheme (degree and diploma courses)",
+      "name_ta": null,
+      "jurisdiction": "central",
+      "applicable_state": "ALL",
+      "category": "scholarship",
+      "beneficiary_types": [
+        "student",
+        "person_with_disability"
+      ],
+      "summary": "AICTE scholarship and contingency grant for students with disabilities admitted to degree or diploma programmes at AICTE-approved institutions.",
+      "benefits": "Rs 50,000 per year for incidental expenses (AICTE scheme page).",
+      "required_documents": [],
+      "application_steps": [
+        "Register on the National Scholarship Portal (scholarships.gov.in)"
+      ],
+      "official_url": "https://www.aicte.gov.in/schemes/students-development-schemes",
+      "application_url": "https://scholarships.gov.in/",
+      "operational_status": "active",
+      "accepting_applications": null,
+      "is_cash_benefit": true,
+      "verification_status": "partially_verified",
+      "date_checked": "2026-10-13",
+      "verification_notes": "Official AICTE page confirms the scheme, Rs 50,000/year and NSP application, but does not state eligibility. The 40% disability and Rs 8 lakh income figures come from a university notice citing AICTE (secondary), so those rules are verified=false. The old aicte-india.org URL now redirects to aicte.gov.in. Degree and diploma courses are covered by this single scheme, so they appear as one entry.",
+      "sources": [
+        {
+          "url": "https://www.aicte.gov.in/schemes/students-development-schemes",
+          "title": "AICTE student development schemes",
+          "source_type": "portal",
+          "verification_status": "verified"
+        }
+      ],
+      "rules": [
+        {
+          "key": "min_disability_pct",
+          "field": "disability_percentage",
+          "operator": "gte",
+          "value": 40,
+          "mandatory": true,
+          "verified": false,
+          "description": "40% or more disability (from secondary source)."
+        },
+        {
+          "key": "income_ceiling",
+          "field": "annual_family_income",
+          "operator": "lte",
+          "value": 800000,
+          "mandatory": true,
+          "verified": false,
+          "description": "Family income below Rs 8 lakh (from secondary source)."
+        },
+        {
+          "key": "level",
+          "field": "education_level",
+          "operator": "in",
+          "value": [
+            "diploma",
+            "undergraduate"
+          ],
+          "mandatory": true,
+          "verified": false,
+          "description": "First year of AICTE-approved degree/diploma, or lateral entry (from secondary source)."
+        }
+      ]
+    },
+    {
+      "id": "free-coaching-swd",
+      "name": "Free Coaching Scholarship for Students with Disabilities (Central Sector Umbrella Scheme)",
+      "name_ta": null,
+      "jurisdiction": "central",
+      "applicable_state": "ALL",
+      "category": "scholarship",
+      "beneficiary_types": [
+        "student",
+        "person_with_disability",
+        "job_seeker"
+      ],
+      "summary": "Coaching for competitive recruitment examinations and entrance examinations for professional and technical courses.",
+      "benefits": "Free coaching through implementing agencies; online coaching is not supported (guidelines section 14).",
+      "required_documents": [
+        "Valid disability certificate",
+        "UDID / UDID enrolment number",
+        "Aadhaar or Aadhaar enrolment number"
+      ],
+      "application_steps": [
+        "Check the implementing agencies and courses notified by DEPwD",
+        "Apply as invited through the implementing agency / portal"
+      ],
+      "official_url": "https://depwd.gov.in/en/scholarship/",
+      "application_url": null,
+      "operational_status": "active",
+      "accepting_applications": null,
+      "is_cash_benefit": false,
+      "verification_status": "verified",
+      "date_checked": "2026-10-13",
+      "verification_notes": "Guidelines table: 1,000 slots, income ceiling Rs 8 lakh, 30% female reservation. Revision noted on DEPwD page dated 24/02/2025 was not read. Listed as a verified scheme in the same DEPwD guidelines; it replaces a duplicate AICTE degree/diploma entry from the original request.",
+      "sources": [
+        {
+          "url": "https://depwd.gov.in/en/scholarship/",
+          "title": "DEPwD Scholarship page",
+          "source_type": "portal",
+          "verification_status": "verified"
+        }
+      ],
+      "rules": [
+        {
+          "key": "disability_required",
+          "field": "disability_status",
+          "operator": "eq",
+          "value": "yes",
+          "mandatory": true,
+          "verified": true,
+          "description": "Must have a benchmark disability."
+        },
+        {
+          "key": "min_disability_pct",
+          "field": "disability_percentage",
+          "operator": "gte",
+          "value": 40,
+          "mandatory": true,
+          "verified": true,
+          "description": "Minimum 40% disability."
+        },
+        {
+          "key": "income_ceiling",
+          "field": "annual_family_income",
+          "operator": "lte",
+          "value": 800000,
+          "mandatory": true,
+          "verified": true,
+          "description": "Income ceiling Rs 8 lakh per annum."
+        },
+        {
+          "key": "purpose_note",
+          "field": "disability_status",
+          "operator": "eq",
+          "value": "yes",
+          "mandatory": false,
+          "verified": true,
+          "description": "This is coaching for competitive recruitment or entrance examinations (guidelines section 14.2); online coaching is not supported. Check that it suits the applicant's goals."
+        }
+      ]
+    },
+    {
+      "id": "adip",
+      "name": "Scheme of Assistance to Persons with Disabilities for Purchase/Fitting of Aids and Appliances (ADIP)",
+      "name_ta": null,
+      "jurisdiction": "central",
+      "applicable_state": "ALL",
+      "category": "assistive_devices",
+      "beneficiary_types": [
+        "person_with_disability",
+        "child"
+      ],
+      "summary": "Funds durable, certified assistive devices and, where needed, corrective surgery through implementing agencies.",
+      "benefits": "Assistive devices and aids; includes a cochlear implant component (DEPwD ADIP page).",
+      "required_documents": [
+        "Aadhaar (gazette notification dated 29/02/2024 for adults and children)"
+      ],
+      "application_steps": [
+        "Individuals apply for a device on the ADIP portal (adip.depwd.gov.in)"
+      ],
+      "official_url": "https://depwd.gov.in/en/adip/",
+      "application_url": "https://adip.depwd.gov.in/",
+      "operational_status": "active",
+      "accepting_applications": null,
+      "is_cash_benefit": false,
+      "verification_status": "partially_verified",
+      "date_checked": "2026-10-13",
+      "verification_notes": "Scheme revised effective 26/09/2024; approved only up to 31/03/2026 (end of 15th Finance Commission cycle), so continuation beyond that date was NOT confirmed. Eligibility (disability %, income) is in the revised-scheme PDF which was not read, so no eligibility rules are recorded.",
+      "sources": [
+        {
+          "url": "https://depwd.gov.in/en/adip/",
+          "title": "DEPwD ADIP page",
+          "source_type": "portal",
+          "verification_status": "verified"
+        }
+      ],
+      "rules": []
+    },
+    {
+      "id": "ddrs",
+      "name": "Deendayal Disabled Rehabilitation Scheme (DDRS) / Deendayal Divyangjan Rehabilitation Scheme",
+      "name_ta": null,
+      "jurisdiction": "central",
+      "applicable_state": "ALL",
+      "category": "ngo_grant",
+      "beneficiary_types": [
+        "organisation"
+      ],
+      "summary": "Grant-in-aid to registered NGOs running rehabilitation projects. Individuals do not apply directly; they may benefit through services of funded NGOs.",
+      "benefits": null,
+      "required_documents": [],
+      "application_steps": [
+        "NGOs: register on NGO Darpan, then apply via the e-Anudaan portal (grants.depwd.gov.in)"
+      ],
+      "official_url": "https://depwd.gov.in/en/ddrs/",
+      "application_url": "https://grants.depwd.gov.in/",
+      "operational_status": "active",
+      "accepting_applications": null,
+      "is_cash_benefit": false,
+      "verification_status": "verified",
+      "date_checked": "2026-10-13",
+      "verification_notes": "Revised guidelines effective 01/10/2024. Applications accepted only when notified in a given year; open/closed status unknown. The page uses both 'Divyangjan' and 'Disabled' in the name.",
+      "sources": [
+        {
+          "url": "https://depwd.gov.in/en/ddrs/",
+          "title": "DEPwD DDRS page",
+          "source_type": "portal",
+          "verification_status": "verified"
+        }
+      ],
+      "rules": [
+        {
+          "key": "individual_benefit",
+          "field": "applicant_is_organisation",
+          "operator": "is_true",
+          "value": true,
+          "mandatory": true,
+          "verified": true,
+          "description": "Grants are for registered organisations, not individuals."
+        }
+      ]
+    },
+    {
+      "id": "udid",
+      "name": "Unique Disability ID (UDID) Project",
+      "name_ta": null,
+      "jurisdiction": "central",
+      "applicable_state": "ALL",
+      "category": "identity_certification",
+      "beneficiary_types": [
+        "person_with_disability",
+        "child"
+      ],
+      "summary": "National database and identity card for persons with disabilities. It is a certification/identity programme, not a cash-benefit scheme; many other schemes require the UDID.",
+      "benefits": null,
+      "required_documents": [
+        "Aadhaar (mandatory for adults and children per notifications dated 08/08/2023)"
+      ],
+      "application_steps": [
+        "Register on the UDID portal (swavlambancard.gov.in)",
+        "Apply for disability certificate and UDID card after login",
+        "Offline applications are also accepted and later digitised"
+      ],
+      "official_url": "https://depwd.gov.in/en/unique-disability-id-udid/",
+      "application_url": "https://www.swavlambancard.gov.in/",
+      "operational_status": "active",
+      "accepting_applications": true,
+      "is_cash_benefit": false,
+      "verification_status": "verified",
+      "date_checked": "2026-10-13",
+      "verification_notes": "Page lists 21 disabilities (subject to updates). Disability percentage is assessed by medical authority. Page last updated 11 June 2026.",
+      "sources": [
+        {
+          "url": "https://depwd.gov.in/en/unique-disability-id-udid/",
+          "title": "DEPwD UDID page",
+          "source_type": "portal",
+          "verification_status": "verified"
+        }
+      ],
+      "rules": [
+        {
+          "key": "disability_not_ruled_out",
+          "field": "disability_status",
+          "operator": "in",
+          "value": [
+            "yes",
+            "prefer_not_to_say"
+          ],
+          "mandatory": true,
+          "verified": true,
+          "description": "Intended for persons with disabilities."
+        }
+      ]
+    },
+    {
+      "id": "sipda",
+      "name": "Scheme for Implementation of the Rights of Persons with Disabilities Act, 2016 (SIPDA)",
+      "name_ta": null,
+      "jurisdiction": "central",
+      "applicable_state": "ALL",
+      "category": "institutional_grant",
+      "beneficiary_types": [
+        "organisation",
+        "state_government"
+      ],
+      "summary": "Grant-in-aid to State Governments and government-established bodies for accessibility, certification camps, skill development and related activities. Not an individual benefit scheme.",
+      "benefits": null,
+      "required_documents": [],
+      "application_steps": [],
+      "official_url": "https://depwd.gov.in/en/sipda/",
+      "application_url": null,
+      "operational_status": "active",
+      "accepting_applications": null,
+      "is_cash_benefit": false,
+      "verification_status": "verified",
+      "date_checked": "2026-10-13",
+      "verification_notes": "Page gives no application process for individuals. Page last updated 30 Sept 2026.",
+      "sources": [
+        {
+          "url": "https://depwd.gov.in/en/sipda/",
+          "title": "DEPwD SIPDA page",
+          "source_type": "portal",
+          "verification_status": "verified"
+        }
+      ],
+      "rules": [
+        {
+          "key": "institutional_only",
+          "field": "applicant_is_organisation",
+          "operator": "is_true",
+          "value": true,
+          "mandatory": true,
+          "verified": true,
+          "description": "Grants go to State Governments and government-established bodies."
+        }
+      ]
+    },
+    {
+      "id": "national-fund-pwd",
+      "name": "National Fund for Persons with Disabilities",
+      "name_ta": null,
+      "jurisdiction": "central",
+      "applicable_state": "ALL",
+      "category": "financial_assistance",
+      "beneficiary_types": [
+        "person_with_disability",
+        "organisation"
+      ],
+      "summary": "Financial assistance under DEPwD's National Fund, governed by the 2026 guidelines.",
+      "benefits": null,
+      "required_documents": [],
+      "application_steps": [
+        "Apply through nationalfund.depwd.gov.in"
+      ],
+      "official_url": "https://depwd.gov.in/en/national-fund-under-pwds/",
+      "application_url": "https://nationalfund.depwd.gov.in/",
+      "operational_status": "active",
+      "accepting_applications": null,
+      "is_cash_benefit": true,
+      "verification_status": "partially_verified",
+      "date_checked": "2026-10-13",
+      "verification_notes": "The 2026 guidelines PDF (dated 14/08/2026 on the page) was not read, so eligibility and permitted uses are unknown. Page footer date conflicts with document dates.",
+      "sources": [
+        {
+          "url": "https://depwd.gov.in/en/national-fund-under-pwds/",
+          "title": "DEPwD National Fund page",
+          "source_type": "portal",
+          "verification_status": "verified"
+        }
+      ],
+      "rules": []
+    },
+    {
+      "id": "ignd-ps",
+      "name": "Indira Gandhi National Disability Pension Scheme (IGNDPS)",
+      "name_ta": null,
+      "jurisdiction": "central",
+      "applicable_state": "ALL",
+      "category": "pension",
+      "beneficiary_types": [
+        "person_with_disability"
+      ],
+      "summary": "National Social Assistance Programme pension for persons with severe or multiple disabilities from BPL households.",
+      "benefits": null,
+      "required_documents": [],
+      "application_steps": [],
+      "official_url": "https://nsap.nic.in/",
+      "application_url": null,
+      "operational_status": "unverified",
+      "accepting_applications": null,
+      "is_cash_benefit": true,
+      "verification_status": "unverified",
+      "date_checked": "2026-10-13",
+      "verification_notes": "nsap.nic.in and nsap.gov.in could not be reached from the verification environment. Details below come from a parliamentary answer and explainer sites (BPL household, age 18-79, severe/multiple disability, Rs 300/month central share). An 80% disability threshold was not confirmed. States top up and differ.",
+      "sources": [
+        {
+          "url": "https://nsap.nic.in/",
+          "title": "NSAP portal (unreachable)",
+          "source_type": "portal",
+          "verification_status": "unverified"
+        }
+      ],
+      "rules": [
+        {
+          "key": "age_range",
+          "field": "age",
+          "operator": "between",
+          "value": [
+            18,
+            79
+          ],
+          "mandatory": true,
+          "verified": false,
+          "description": "Age 18-79 (secondary source)."
+        },
+        {
+          "key": "bpl",
+          "field": "is_bpl",
+          "operator": "is_true",
+          "value": true,
+          "mandatory": true,
+          "verified": false,
+          "description": "BPL household (secondary source)."
+        }
+      ]
+    },
+    {
+      "id": "ignoa-ps",
+      "name": "Indira Gandhi National Old Age Pension Scheme (IGNOAPS)",
+      "name_ta": null,
+      "jurisdiction": "central",
+      "applicable_state": "ALL",
+      "category": "pension",
+      "beneficiary_types": [
+        "senior_citizen"
+      ],
+      "summary": "National Social Assistance Programme pension for older persons from BPL households.",
+      "benefits": null,
+      "required_documents": [],
+      "application_steps": [],
+      "official_url": "https://nsap.nic.in/",
+      "application_url": null,
+      "operational_status": "unverified",
+      "accepting_applications": null,
+      "is_cash_benefit": true,
+      "verification_status": "unverified",
+      "date_checked": "2026-10-13",
+      "verification_notes": "Official site unreachable. Secondary sources: age 60+, BPL household, central assistance Rs 200/month (60-79) and Rs 500/month (80+). Not confirmed on an official page.",
+      "sources": [
+        {
+          "url": "https://nsap.nic.in/",
+          "title": "NSAP portal (unreachable)",
+          "source_type": "portal",
+          "verification_status": "unverified"
+        }
+      ],
+      "rules": [
+        {
+          "key": "min_age",
+          "field": "age",
+          "operator": "gte",
+          "value": 60,
+          "mandatory": true,
+          "verified": false,
+          "description": "Age 60 or above (secondary source)."
+        },
+        {
+          "key": "bpl",
+          "field": "is_bpl",
+          "operator": "is_true",
+          "value": true,
+          "mandatory": true,
+          "verified": false,
+          "description": "BPL household (secondary source)."
+        }
+      ]
+    },
+    {
+      "id": "ignw-ps",
+      "name": "Indira Gandhi National Widow Pension Scheme (IGNWPS)",
+      "name_ta": null,
+      "jurisdiction": "central",
+      "applicable_state": "ALL",
+      "category": "pension",
+      "beneficiary_types": [
+        "widow"
+      ],
+      "summary": "National Social Assistance Programme pension for widows from BPL households.",
+      "benefits": null,
+      "required_documents": [],
+      "application_steps": [],
+      "official_url": "https://nsap.nic.in/",
+      "application_url": null,
+      "operational_status": "unverified",
+      "accepting_applications": null,
+      "is_cash_benefit": true,
+      "verification_status": "unverified",
+      "date_checked": "2026-10-13",
+      "verification_notes": "Official site unreachable. Secondary sources: widow aged 40-79, BPL household, Rs 300/month central share (a parliamentary answer). Sources conflict on some figures.",
+      "sources": [
+        {
+          "url": "https://nsap.nic.in/",
+          "title": "NSAP portal (unreachable)",
+          "source_type": "portal",
+          "verification_status": "unverified"
+        }
+      ],
+      "rules": [
+        {
+          "key": "age_range",
+          "field": "age",
+          "operator": "between",
+          "value": [
+            40,
+            79
+          ],
+          "mandatory": true,
+          "verified": false,
+          "description": "Age 40-79 (secondary source)."
+        },
+        {
+          "key": "widow",
+          "field": "is_widow",
+          "operator": "is_true",
+          "value": true,
+          "mandatory": true,
+          "verified": false,
+          "description": "Widow (secondary source)."
+        },
+        {
+          "key": "bpl",
+          "field": "is_bpl",
+          "operator": "is_true",
+          "value": true,
+          "mandatory": true,
+          "verified": false,
+          "description": "BPL household (secondary source)."
+        }
+      ]
+    },
+    {
+      "id": "pm-kmy",
+      "name": "Pradhan Mantri Kisan Maandhan Yojana (PM-KMY)",
+      "name_ta": null,
+      "jurisdiction": "central",
+      "applicable_state": "ALL",
+      "category": "pension",
+      "beneficiary_types": [
+        "farmer"
+      ],
+      "summary": "Contributory pension scheme for small and marginal farmers.",
+      "benefits": null,
+      "required_documents": [],
+      "application_steps": [],
+      "official_url": "https://pmkisan.gov.in/",
+      "application_url": null,
+      "operational_status": "unverified",
+      "accepting_applications": null,
+      "is_cash_benefit": true,
+      "verification_status": "partially_verified",
+      "date_checked": "2026-10-13",
+      "verification_notes": "The official FAQ/operational-guidelines PDFs on pmkisan.gov.in could not be opened directly (TLS certificate error), so rules are quotes seen via search and are verified=false. Eligibility: small/marginal farmers, cultivable land up to 2 hectares, age 18-40, name in land records as on 01.08.2019. Whether the scheme still enrols new members was NOT confirmed. Note: the maandhan.in portal does not list PM-KMY under that name. The pension amount (Rs 3,000/month at age 60) was seen only as a search-result quote of the official operational guidelines, so it is deliberately not shown as a benefit.",
+      "sources": [
+        {
+          "url": "https://pmkisan.gov.in/",
+          "title": "PM-KISAN portal (documents unreachable)",
+          "source_type": "portal",
+          "verification_status": "unverified"
+        }
+      ],
+      "rules": [
+        {
+          "key": "age_range",
+          "field": "age",
+          "operator": "between",
+          "value": [
+            18,
+            40
+          ],
+          "mandatory": true,
+          "verified": false,
+          "description": "Entry age 18-40."
+        },
+        {
+          "key": "land_up_to_2ha",
+          "field": "land_holding_hectares",
+          "operator": "lte",
+          "value": 2,
+          "mandatory": true,
+          "verified": false,
+          "description": "Cultivable land up to 2 hectares."
+        }
+      ]
+    },
+    {
+      "id": "pm-jay",
+      "name": "Ayushman Bharat - Pradhan Mantri Jan Arogya Yojana (AB PM-JAY)",
+      "name_ta": null,
+      "jurisdiction": "central",
+      "applicable_state": "ALL",
+      "category": "health_insurance",
+      "beneficiary_types": [
+        "family",
+        "senior_citizen"
+      ],
+      "summary": "Cashless hospitalisation cover for eligible families, with a separate extension for citizens aged 70 and above.",
+      "benefits": null,
+      "required_documents": [
+        "Aadhaar-based e-KYC (reported by secondary sources)"
+      ],
+      "application_steps": [],
+      "official_url": "https://nha.gov.in/PM-JAY",
+      "application_url": null,
+      "operational_status": "unverified",
+      "accepting_applications": null,
+      "is_cash_benefit": false,
+      "verification_status": "unverified",
+      "date_checked": "2026-10-13",
+      "verification_notes": "nha.gov.in/pmjay.gov.in returned no usable content (blank page / connection refused). Secondary sources report Rs 5 lakh/family/year, SECC-2011-based eligibility, and age 70+ regardless of income. SECC eligibility cannot be determined from a self-reported profile, so recommendation text must say 'check eligibility with the official beneficiary portal'.",
+      "sources": [
+        {
+          "url": "https://nha.gov.in/PM-JAY",
+          "title": "NHA PM-JAY page (no content retrieved)",
+          "source_type": "portal",
+          "verification_status": "unverified"
+        }
+      ],
+      "rules": [
+        {
+          "key": "senior_70",
+          "field": "age",
+          "operator": "gte",
+          "value": 70,
+          "mandatory": false,
+          "verified": false,
+          "description": "Age 70+ extension (secondary source); other families depend on SECC listing."
+        }
+      ]
+    },
+    {
+      "id": "tn-ward-scholarship-welfare-board",
+      "name": "Scholarship to Son and Daughter of Differently Abled Persons (Tamil Nadu Welfare Board for Differently Abled Persons)",
+      "name_ta": null,
+      "jurisdiction": "tamil_nadu",
+      "applicable_state": "Tamil Nadu",
+      "category": "scholarship",
+      "beneficiary_types": [
+        "student",
+        "child",
+        "family_of_person_with_disability"
+      ],
+      "summary": "Educational assistance for wards of differently abled persons enrolled in the Tamil Nadu Welfare Board.",
+      "benefits": "Annual amounts by level of study, e.g. Rs 3,000 (UG), Rs 4,000 (PG), Rs 5,000 (law/engineering/medicine and similar), with higher rates for hostel students (Policy Note 2024-25, Table 13).",
+      "required_documents": [],
+      "application_steps": [
+        "Enrol the differently abled person / family members (above 10 years) in the Welfare Board at the District Differently Abled Welfare Office",
+        "Apply for assistance through the District Differently Abled Welfare Office"
+      ],
+      "official_url": "https://cms.tn.gov.in/cms_migrated/document/docfiles/wdap_e_pn_2024_25.pdf",
+      "application_url": null,
+      "operational_status": "active",
+      "accepting_applications": null,
+      "is_cash_benefit": true,
+      "verification_status": "partially_verified",
+      "date_checked": "2026-10-13",
+      "verification_notes": "Read from the official Policy Note 2024-25 (Department for Welfare of Differently Abled Persons). Amounts for school levels (Table 13 items a-c) were not transcribed. Required documents and any income/percentage criteria are not stated in the note. scd.tn.gov.in failed TLS verification so the department site was not read.",
+      "sources": [
+        {
+          "url": "https://cms.tn.gov.in/cms_migrated/document/docfiles/wdap_e_pn_2024_25.pdf",
+          "title": "Policy Note 2024-25, Welfare of Differently Abled Persons",
+          "source_type": "policy_note",
+          "verification_status": "verified"
+        },
+        {
+          "url": "https://scd.tn.gov.in/",
+          "title": "TN Commissionerate for Welfare of the Differently Abled (TLS error)",
+          "source_type": "portal",
+          "verification_status": "unverified"
+        }
+      ],
+      "rules": [
+        {
+          "key": "state_tn",
+          "field": "state",
+          "operator": "eq",
+          "value": "Tamil Nadu",
+          "mandatory": true,
+          "verified": true,
+          "description": "Tamil Nadu scheme."
+        },
+        {
+          "key": "guardian_disability",
+          "field": "guardian_has_disability",
+          "operator": "is_true",
+          "value": true,
+          "mandatory": true,
+          "verified": true,
+          "description": "Parent/guardian is a differently abled person enrolled in the Welfare Board."
+        },
+        {
+          "key": "is_student",
+          "field": "is_student",
+          "operator": "eq",
+          "value": "yes",
+          "mandatory": true,
+          "verified": true,
+          "description": "Assistance is for sons/daughters pursuing study."
+        }
+      ]
+    },
+    {
+      "id": "tn-unemployment-allowance",
+      "name": "Unemployment Allowance for Differently Abled Persons (Tamil Nadu)",
+      "name_ta": null,
+      "jurisdiction": "tamil_nadu",
+      "applicable_state": "Tamil Nadu",
+      "category": "allowance",
+      "beneficiary_types": [
+        "person_with_disability",
+        "job_seeker"
+      ],
+      "summary": "Monthly allowance for differently abled persons who remain unemployed for more than a year after registering with the employment exchange, for up to 10 years or until employed.",
+      "benefits": "Rs 600/month (10th completed), Rs 750/month (12th completed), Rs 1,000/month (degree completed) (Policy Note 2024-25, Table 10).",
+      "required_documents": [],
+      "application_steps": [
+        "Register with the employment exchange",
+        "Apply through the District Differently Abled Welfare Office"
+      ],
+      "official_url": "https://cms.tn.gov.in/cms_migrated/document/docfiles/wdap_e_pn_2024_25.pdf",
+      "application_url": null,
+      "operational_status": "active",
+      "accepting_applications": null,
+      "is_cash_benefit": true,
+      "verification_status": "partially_verified",
+      "date_checked": "2026-10-13",
+      "verification_notes": "From Policy Note 2024-25. The note does not state a minimum disability percentage, age limit or income ceiling; none are encoded. Rates may have been revised since.",
+      "sources": [
+        {
+          "url": "https://cms.tn.gov.in/cms_migrated/document/docfiles/wdap_e_pn_2024_25.pdf",
+          "title": "Policy Note 2024-25",
+          "source_type": "policy_note",
+          "verification_status": "verified"
+        }
+      ],
+      "rules": [
+        {
+          "key": "state_tn",
+          "field": "state",
+          "operator": "eq",
+          "value": "Tamil Nadu",
+          "mandatory": true,
+          "verified": true,
+          "description": "Tamil Nadu scheme."
+        },
+        {
+          "key": "disability_required",
+          "field": "disability_status",
+          "operator": "eq",
+          "value": "yes",
+          "mandatory": true,
+          "verified": true,
+          "description": "Differently abled person."
+        },
+        {
+          "key": "unemployed_1yr_registered",
+          "field": "registered_unemployed_over_1_year",
+          "operator": "is_true",
+          "value": true,
+          "mandatory": true,
+          "verified": true,
+          "description": "Unemployed for more than a year after employment-exchange registration."
+        }
+      ]
+    },
+    {
+      "id": "tn-high-support-need-assistance",
+      "name": "Financial Assistance to Differently Abled Persons with High Support Need (Tamil Nadu)",
+      "name_ta": null,
+      "jurisdiction": "tamil_nadu",
+      "applicable_state": "Tamil Nadu",
+      "category": "allowance",
+      "beneficiary_types": [
+        "person_with_disability",
+        "caregiver"
+      ],
+      "summary": "Monthly assistance to the caretaker of a differently abled person certified as having high support need.",
+      "benefits": "Rs 1,000/month to the care taker (Policy Note 2024-25, section 15.2).",
+      "required_documents": [
+        "Certification as 'differently abled person with high support need' on recommendation of the Assessment Board"
+      ],
+      "application_steps": [
+        "Apply through the District Differently Abled Welfare Office; the Assessment Board must certify high support need"
+      ],
+      "official_url": "https://cms.tn.gov.in/cms_migrated/document/docfiles/wdap_e_pn_2024_25.pdf",
+      "application_url": null,
+      "operational_status": "active",
+      "accepting_applications": null,
+      "is_cash_benefit": true,
+      "verification_status": "partially_verified",
+      "date_checked": "2026-10-13",
+      "verification_notes": "Only the amount, payee (care taker) and Assessment Board certification are stated in the note. The requested name 'Personal Assistance Allowance' was not found; the official name in the Policy Note is used.",
+      "sources": [
+        {
+          "url": "https://cms.tn.gov.in/cms_migrated/document/docfiles/wdap_e_pn_2024_25.pdf",
+          "title": "Policy Note 2024-25",
+          "source_type": "policy_note",
+          "verification_status": "verified"
+        }
+      ],
+      "rules": [
+        {
+          "key": "state_tn",
+          "field": "state",
+          "operator": "eq",
+          "value": "Tamil Nadu",
+          "mandatory": true,
+          "verified": true,
+          "description": "Tamil Nadu scheme."
+        },
+        {
+          "key": "disability_required",
+          "field": "disability_status",
+          "operator": "eq",
+          "value": "yes",
+          "mandatory": true,
+          "verified": true,
+          "description": "Differently abled person."
+        },
+        {
+          "key": "high_support_certified",
+          "field": "high_support_need_certified",
+          "operator": "is_true",
+          "value": true,
+          "mandatory": true,
+          "verified": true,
+          "description": "Certified as high support need by the Assessment Board."
+        }
+      ]
+    },
+    {
+      "id": "tn-travel-concession",
+      "name": "Travel Concession for Differently Abled Persons (Tamil Nadu)",
+      "name_ta": null,
+      "jurisdiction": "tamil_nadu",
+      "applicable_state": "Tamil Nadu",
+      "category": "concession",
+      "beneficiary_types": [
+        "person_with_disability"
+      ],
+      "summary": "Free bus travel with a bus pass for education, employment, training or treatment, plus a 75% concession on Government buses (except A/C) for all categories.",
+      "benefits": "100% free travel in Government buses with bus pass (residence to place of education/employment/training/treatment; white-board town buses with escort); visually impaired may use mofussil buses up to 100 km. 75% concession on all Government buses except A/C (Policy Note 2024-25, sections 15.6.1-15.6.2).",
+      "required_documents": [
+        "Bus pass (for free travel)"
+      ],
+      "application_steps": [
+        "Obtain the bus pass through the District Differently Abled Welfare Office / transport corporation"
+      ],
+      "official_url": "https://cms.tn.gov.in/cms_migrated/document/docfiles/wdap_e_pn_2024_25.pdf",
+      "application_url": null,
+      "operational_status": "active",
+      "accepting_applications": null,
+      "is_cash_benefit": false,
+      "verification_status": "partially_verified",
+      "date_checked": "2026-10-13",
+      "verification_notes": "Concession terms verified from the Policy Note. The exact pass-issuing procedure and documents are not stated; do not present the steps above as exhaustive.",
+      "sources": [
+        {
+          "url": "https://cms.tn.gov.in/cms_migrated/document/docfiles/wdap_e_pn_2024_25.pdf",
+          "title": "Policy Note 2024-25",
+          "source_type": "policy_note",
+          "verification_status": "verified"
+        }
+      ],
+      "rules": [
+        {
+          "key": "state_tn",
+          "field": "state",
+          "operator": "eq",
+          "value": "Tamil Nadu",
+          "mandatory": true,
+          "verified": true,
+          "description": "Tamil Nadu scheme."
+        },
+        {
+          "key": "disability_required",
+          "field": "disability_status",
+          "operator": "eq",
+          "value": "yes",
+          "mandatory": true,
+          "verified": true,
+          "description": "Differently abled person."
+        }
+      ]
+    },
+    {
+      "id": "tn-maintenance-allowance",
+      "name": "Maintenance Allowance for Differently Abled Persons (Tamil Nadu)",
+      "name_ta": null,
+      "jurisdiction": "tamil_nadu",
+      "applicable_state": "Tamil Nadu",
+      "category": "pension",
+      "beneficiary_types": [
+        "person_with_disability"
+      ],
+      "summary": "Monthly maintenance allowance for specified categories of differently abled persons.",
+      "benefits": "Rs 2,000/month, paid to the beneficiary's account through the District Differently Abled Welfare Office (Policy Note 2024-25, section 15.1).",
+      "required_documents": [],
+      "application_steps": [
+        "Apply at the District Differently Abled Welfare Office; applications are scrutinised and paid to the bank account"
+      ],
+      "official_url": "https://cms.tn.gov.in/cms_migrated/document/docfiles/wdap_e_pn_2024_25.pdf",
+      "application_url": null,
+      "operational_status": "active",
+      "accepting_applications": null,
+      "is_cash_benefit": true,
+      "verification_status": "partially_verified",
+      "date_checked": "2026-10-13",
+      "verification_notes": "Eligible categories and minimum percentages read from Table 9: intellectual disability 40%+; severely affected 75%+; Parkinson's, spinal cord injury, multiple sclerosis 40%+; muscular dystrophy 40%+; leprosy-affected 40%+. The engine checks the three eligible categories (75%+, intellectual 40%+, or a listed condition at 40%+) and asks for the listed-condition answer when needed. Secondary sources quoted lower amounts (Rs 1,500) from older years; the Policy Note value is used. Listed as a verified replacement for the requested 'Differently Abled Pension Scheme', which could not be verified.",
+      "sources": [
+        {
+          "url": "https://cms.tn.gov.in/cms_migrated/document/docfiles/wdap_e_pn_2024_25.pdf",
+          "title": "Policy Note 2024-25",
+          "source_type": "policy_note",
+          "verification_status": "verified"
+        }
+      ],
+      "rules": [
+        {
+          "key": "state_tn",
+          "field": "state",
+          "operator": "eq",
+          "value": "Tamil Nadu",
+          "mandatory": true,
+          "verified": true,
+          "description": "Tamil Nadu scheme."
+        },
+        {
+          "key": "disability_required",
+          "field": "disability_status",
+          "operator": "eq",
+          "value": "yes",
+          "mandatory": true,
+          "verified": true,
+          "description": "Differently abled person in an eligible category."
+        },
+        {
+          "key": "eligible_category",
+          "field": "disability_percentage",
+          "operator": "any_of",
+          "value": [
+            {
+              "field": "disability_percentage",
+              "operator": "gte",
+              "value": 75
+            },
+            {
+              "operator": "all_of",
+              "value": [
+                {
+                  "field": "disability_type",
+                  "operator": "eq",
+                  "value": "intellectual"
+                },
+                {
+                  "field": "disability_percentage",
+                  "operator": "gte",
+                  "value": 40
+                }
+              ]
+            },
+            {
+              "operator": "all_of",
+              "value": [
+                {
+                  "field": "has_listed_chronic_condition",
+                  "operator": "is_true",
+                  "value": true
+                },
+                {
+                  "field": "disability_percentage",
+                  "operator": "gte",
+                  "value": 40
+                }
+              ]
+            }
+          ],
+          "mandatory": true,
+          "verified": true,
+          "description": "Eligible category (Policy Note 2024-25, Table 9): severely affected 75%+; intellectual disability 40%+; or Parkinson's disease, spinal cord injury, multiple sclerosis, muscular dystrophy or leprosy-affected at 40%+."
+        }
+      ]
+    }
+  ]
+}

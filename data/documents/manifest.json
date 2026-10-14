@@ -1,0 +1,29 @@
+{
+  "entries": [
+    {
+      "scheme_ids": ["pre-matric-swd", "post-matric-swd", "top-class-swd", "free-coaching-swd"],
+      "url": "https://depwd.gov.in/en/scholarship/",
+      "title": "DEPwD Central Sector Umbrella Scheme Scholarships for Students with Disabilities - guidelines (OM dated 25/09/2024)",
+      "source_type": "guideline_pdf",
+      "local_path": "data/documents/central/umbrella-scholarship-guidelines-2024-09-25.pdf",
+      "published_date": "2024-09-25"
+    },
+    {
+      "scheme_ids": ["tn-ward-scholarship-welfare-board", "tn-unemployment-allowance", "tn-high-support-need-assistance", "tn-travel-concession", "tn-maintenance-allowance"],
+      "url": "https://cms.tn.gov.in/cms_migrated/document/docfiles/wdap_e_pn_2024_25.pdf",
+      "title": "Tamil Nadu Policy Note 2024-25, Welfare of Differently Abled Persons",
+      "source_type": "policy_note",
+      "local_path": "data/documents/tamil_nadu/policy-note-welfare-differently-abled-2024-25.pdf",
+      "published_date": "2024-06-19"
+    },
+    {"scheme_ids": ["adip"], "url": "https://depwd.gov.in/en/adip/", "title": "DEPwD ADIP page", "source_type": "page"},
+    {"scheme_ids": ["ddrs"], "url": "https://depwd.gov.in/en/ddrs/", "title": "DEPwD DDRS page", "source_type": "page"},
+    {"scheme_ids": ["sipda"], "url": "https://depwd.gov.in/en/sipda/", "title": "DEPwD SIPDA page", "source_type": "page"},
+    {"scheme_ids": ["udid"], "url": "https://depwd.gov.in/en/unique-disability-id-udid/", "title": "DEPwD UDID page", "source_type": "page"},
+    {"scheme_ids": ["national-fund-pwd"], "url": "https://depwd.gov.in/en/national-fund-under-pwds/", "title": "DEPwD National Fund page", "source_type": "page"},
+    {"scheme_ids": ["aicte-saksham"], "url": "https://www.aicte.gov.in/schemes/students-development-schemes", "title": "AICTE student development schemes", "source_type": "page"},
+    {"scheme_ids": ["ignd-ps", "ignoa-ps", "ignw-ps"], "url": "https://nsap.nic.in/", "title": "NSAP portal", "source_type": "portal"},
+    {"scheme_ids": ["pm-jay"], "url": "https://nha.gov.in/PM-JAY", "title": "NHA PM-JAY page", "source_type": "page"},
+    {"scheme_ids": ["pm-kmy"], "url": "https://pmkisan.gov.in/", "title": "PM-KISAN portal", "source_type": "portal"}
+  ]
+}

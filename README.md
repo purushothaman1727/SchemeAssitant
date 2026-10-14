@@ -70,7 +70,8 @@ frontend/src/     pages, components, i18n (English/Tamil), services
 data/             schemes.json, sample_profiles.json, documents/ (manifest + official PDFs),
                   VERIFICATION_REPORT.md
 tests/            backend test suite
-docker-compose.yml, requirements.txt, .env.example
+docker-compose.yml, .env.example
+requirements.txt (runtime), requirements-dev.txt (adds pytest)
 ```
 
 ## Quick start (local, SQLite)
@@ -168,6 +169,7 @@ Rules and scheme amounts can change; re-verify before relying on them.
 ## Testing
 
 ```bash
+pip install -r requirements-dev.txt                 # runtime deps + pytest
 export PYTHONPATH=backend && python -m pytest -q     # backend: 240 passed, 1 xpassed
 cd frontend && npm test                              # frontend: 14 tests
 ```
@@ -175,6 +177,9 @@ cd frontend && npm test                              # frontend: 14 tests
 Covered: all 20 records, eligibility boundaries and composite categories, children/adults/undisclosed
 disability, unverified rules, state restrictions, retrieval and attribution, hallucination guards, API
 validation, admin auth and rate limiting, ingestion failures, persistence, retention.
+
+The dependency files were verified by installing `requirements-dev.txt` into a brand-new virtual
+environment and running the full backend suite there.
 
 The `xpassed` test documents a known limit: numeric rules inside PDF tables are not reliably retrievable
 with the real embedding model, so they come from the verified structured data instead.

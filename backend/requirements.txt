@@ -1,0 +1,28 @@
+# Runtime dependencies for the backend (Python 3.12).
+# Direct dependencies are pinned to the versions the test suite was run against.
+# Install:  pip install -r requirements.txt        (tests: pip install -r requirements-dev.txt)
+
+# --- web API ---
+fastapi==0.115.6
+uvicorn[standard]==0.32.1
+pydantic==2.14.1
+pydantic-settings==2.6.1
+httpx==0.28.1              # LLM client, document fetcher, FastAPI TestClient
+
+# --- database ---
+SQLAlchemy==2.0.36
+alembic==1.14.0
+psycopg2-binary==2.9.10    # PostgreSQL driver (Docker Compose); SQLite needs nothing extra
+
+# --- auth, limits ---
+PyJWT==2.10.1
+bcrypt==4.2.1
+slowapi==0.1.9
+
+# --- retrieval / ingestion ---
+chromadb==0.5.23
+fastembed==0.4.2           # ONNX runtime embeddings, no PyTorch
+numpy==2.5.4               # pinned: chromadb/onnxruntime behaviour depends on it
+PyMuPDF==1.25.1            # PDF text extraction
+beautifulsoup4==4.12.3     # HTML text extraction
+lxml==5.3.0

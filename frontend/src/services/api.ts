@@ -3,7 +3,12 @@ import type {
   ChatReply, ProfilePayload, RecommendationResponse, SchemeDetail, SchemePage,
 } from "../types/api";
 
-const http = axios.create({ baseURL: "/api", timeout: 45000 });
+
+const http = axios.create({
+  baseURL: `${import.meta.env.VITE_API_URL}/api`,
+  timeout: 45000,
+});
+
 
 export function errorMessage(e: unknown): string {
   const err = e as AxiosError<{ detail?: unknown }>;

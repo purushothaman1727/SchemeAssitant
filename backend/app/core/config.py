@@ -1,11 +1,21 @@
 from functools import lru_cache
+from pathlib import Path
 
 from pydantic import Field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
+# Relative paths (.env, ./data/...) resolve against the project root, so the server works
+# whether it is started from the root or from backend/.
+PROJECT_ROOT = Path(__file__).resolve().parents[3]
+
+
+def _from_root(path: str) -> str:
+    p = Path(path)
+    return path if p.is_absolute() else str(PROJECT_ROOT / p)
+
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_file=".env", extra="ignore")
+    model_config = SettingsConfigDict(env_file=PROJECT_ROOT / ".env", extra="ignore")
 
     app_env: str = "development"
     log_level: str = "INFO"
@@ -44,7 +54,15 @@ class Settings(BaseSettings):
         for prefix in ("postgres://", "postgresql://"):
             if v.startswith(prefix):
                 return "postgresql+psycopg2://" + v[len(prefix):]
+        prefix = "sqlite:///"
+        if v.startswith(prefix) and v != prefix + ":memory:":
+            return prefix + _from_root(v[len(prefix):]).replace("\\", "/")
         return v
+
+    @field_validator("chroma_path", "embedding_cache_dir")
+    @classmethod
+    def _resolve_dir(cls, v: str) -> str:
+        return _from_root(v)
 
     @property
     def cors_origin_list(self) -> list[str]:
